@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { CONSTANTS } from './constants.js';
 import { fetchContacts,addContact,deleteContact } from "./contactsOps.js";
 import { createSelector } from "@reduxjs/toolkit";
-import { filter } from "./filtersSlice.js";
+import { filter } from "../filters/filtersSlice.js";
 
 
 const handlePending = (state) => {
