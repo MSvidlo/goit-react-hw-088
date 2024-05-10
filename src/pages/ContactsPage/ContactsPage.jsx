@@ -10,6 +10,12 @@ import SearchBox from "../../components/SearchBox/SearchBox";
 
 
 export default function ContactsPage(){
+  const [isEdit, setIsEdit] = useState(false);
+  const [isDelete, setIsDelete] = useState(false);
+  const [selectedContact, setSelectedContact] = useState({});
+
+
+
     const dispatch = useDispatch(selectLoading);
     const isLoading = useSelector(selectLoading);
     
@@ -17,6 +23,21 @@ export default function ContactsPage(){
     useEffect(() => {
         dispatch(fetchContacts())
     }, [dispatch]);
+
+     function handleEditClicked({ name, number, id }) {
+    setSelectedContact({ name, number, id });
+    setIsEdit(true);
+  }
+
+  function handleDeleteClicked({ name, number, id }) {
+    setSelectedContact({ name, number, id });
+    setIsDelete(true);
+  }
+
+  function modalClose() {
+    setIsDelete(false);
+    setIsEdit(false);
+  }
     return (
         <>
             <DocumentTitle>PhoneBoock</DocumentTitle>
