@@ -6,17 +6,20 @@ import  ContactFrom from './components/ContactForm/ContactForm';
 import ContacList from './components/ContactList/ContactList';
 import SearchBox from './components/SearchBox/SearchBox';
 import { refreshUser } from './redux/auth/operations';
-import { selectIsRefreshing } from './redux/auth/selectors';
+import { selectIsLoading, selectIsRefreshing } from './redux/auth/selectors';
 import { fetchContacts } from './redux/contacts/contactsOps';
 import { lazy } from 'react';
 import { Route,Routes } from 'react-router-dom';
 import { Layout} from './Layout';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
-
+import { CONSTANTS } from './components/constants';
+import Modal from 'react-modal';
+import { loadEnv } from 'vite';
+import { loading } from './redux/contacts/contactsSlice';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage')); 
-const RegisterPage = lazy(() => import('./pages/RegisterPage/RegiserPage'));
+const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const ContactsPage = lazy(() => import('./pages/ContactsPage/ContactsPage'));
 
@@ -25,6 +28,9 @@ const App = () => {
  const { isRefreshing } = useSelector(selectIsRefreshing)
 
   
+  const selectLoadingAuth = useSelector(selectIsLoading);
+  const selectLoadingContacts = useSelector(loading);
+
   useEffect(() => {
     dispatch(refreshUser())
   }, [dispatch]);
@@ -37,23 +43,29 @@ const App = () => {
         <Route
           path="/register"
           element={
-            <RestrictedRoute redirectTo="/tasks" component={<RegisterPage />} />
+            <RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />
           }
         />
         <Route
           path="/login"
           element={
-            <RestrictedRoute redirectTo="/tasks" component={<LoginPage />} />
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
           }
         />
         <Route
-          path="/tasks"
+          path="/contacts"
           element={
             <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
         />
-      </Routes>
+        </Routes>
+           <Modal
+        style={CONSTANTS.modalStyles}
+        isOpen={selectLoadingAuth || selectLoadingContacts}
+      >
+        </Modal>
     </Layout>
+  
   )
 };
 export default App;

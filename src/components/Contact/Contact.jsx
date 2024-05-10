@@ -2,8 +2,8 @@ import css from './Contact.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch,useSelector } from 'react-redux';
-import { deleteContact } from '../../redux/contactsOps';
-import { loading } from '../../redux/contactsSlice';
+import { deleteContact } from '../../redux/contacts/contactsOps';
+import { loading } from '../../redux/contacts/contactsSlice';
 
 
 const Contact = ({ contactData: { name, number, id }, }) => {

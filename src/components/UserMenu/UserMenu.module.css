@@ -1,9 +1,15 @@
-.wrapper {
+.UserMenuWrapper {
     display: flex;
-    align-items: center;
-    gap: 12px;
+    gap: 20px;
+    justify-content: center;
+    align-content: center;
 }
 
-.username {
-    font-weight: 700;
+.welcomeText {
+    line-height: 1.75;
+    letter-spacing: 0.02em;
+    font-weight: lighter;
+    padding: 2px 0 7px 0;
+    font-size: 30px;
+    text-align: center;
 }

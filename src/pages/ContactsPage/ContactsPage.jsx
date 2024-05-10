@@ -6,6 +6,10 @@ import { selectLoading } from "../../redux/contacts/selectors"
 import  DocumentTitle  from '../../DocumentTitle';
 import ContactForm from "../../components/ContactForm/ContactForm";
 import SearchBox from "../../components/SearchBox/SearchBox";
+import EditContactForm from "../../components/EditContactForm/EditContactForm";
+import DeleteContactForm from "../../components/DeleteContactForm/DeleteContactForm";
+import { CONSTANTS } from "../../components/constants";
+import { Toaster } from "react-hot-toast";
 
 
 
@@ -17,7 +21,7 @@ export default function ContactsPage(){
 
 
     const dispatch = useDispatch(selectLoading);
-    const isLoading = useSelector(selectLoading);
+   
     
 
     useEffect(() => {
@@ -41,12 +45,31 @@ export default function ContactsPage(){
     return (
         <>
             <DocumentTitle>PhoneBoock</DocumentTitle>
-            <ContactForm />
-              <SearchBox/>
-              <div>{isLoading && 'Request in progress...'}</div>
-            <ContactList/>
+           <ContactForm notifySuccess={notifySuccess} />
+      <SearchBox />
+      <ContactList handleEdit={handleEditClicked} handleDelete={handleDeleteClicked} />
+      <Modal
+        style={CONSTANTS.modalStyles}
+        onRequestClose={modalClose}
+        isOpen={isEdit || isDelete}
+      >
+        {isEdit && (
+          <EditContactForm
+            notifySuccess={notifySuccess}
+            closeModal={modalClose}
+            editedContact={selectedContact}
+          />
+        )}
+        {isDelete && (
+          <DeleteContactForm
+            notifySuccess={notifySuccess}
+            id={selectedContact.id}
+            closeModal={modalClose}
+          />
+        )}
+      </Modal>
+      <Toaster />
+    </>
+  );
+}
 
-        </>
-    )
-
-};

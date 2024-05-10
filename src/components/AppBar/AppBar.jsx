@@ -1,7 +1,7 @@
 import { Navigation } from '../Navigation/Navigation';
 import { UserMenu } from '../UserMenu/UserMenu';
 import { useSelector } from 'react-redux';
-import { AuthNav } from '../AuthNav/AuthNav';
+import { AuthNav } from '../AuthBar/AuthNav';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import css from './AppBar.module.css';
 
