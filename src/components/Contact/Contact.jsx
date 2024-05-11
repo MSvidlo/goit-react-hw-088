@@ -1,7 +1,7 @@
 import css from './Contact.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faUser } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch,useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
  import { loading } from '../../redux/contacts/contactsSlice';
 
 

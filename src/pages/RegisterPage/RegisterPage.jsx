@@ -4,7 +4,7 @@ import css from './RegisterPage.module.css';
 export default function RegisterPage() {
   return (
     <div  className={css.wrapper}>
-      <DocumentTitle>Registration</DocumentTitle>
+      <h1>Registration</h1>
       <RegisterForm />
     </div>
   );

@@ -47,8 +47,7 @@ export default function ContactsPage(){
   };
     return (
         <>
-            <DocumentTitle>PhoneBoock</DocumentTitle>
-           <ContactForm notifySuccess={notifySuccess} />
+                   <ContactForm notifySuccess={notifySuccess} />
       <SearchBox />
       <ContactList handleEdit={handleEditClicked} handleDelete={handleDeleteClicked} />
       <Modal
