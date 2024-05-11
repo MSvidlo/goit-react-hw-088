@@ -6,7 +6,7 @@ import { useDispatch,useSelector } from 'react-redux';
 
 
 const Contact = ({ handleDelete, handleEdit, contactData: { name, number, id } }) => {
-  const dispatch = useDispatch();
+
   const selectLoading = useSelector(loading);
 
   return (

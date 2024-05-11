@@ -2,12 +2,8 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import  ContactFrom from './components/ContactForm/ContactForm';
-import ContacList from './components/ContactList/ContactList';
-import SearchBox from './components/SearchBox/SearchBox';
 import { refreshUser } from './redux/auth/operations';
 import { selectIsLoading, selectIsRefreshing } from './redux/auth/selectors';
-import { fetchContacts } from './redux/contacts/contactsOps';
 import { lazy } from 'react';
 import { Route,Routes } from 'react-router-dom';
 import { Layout} from './Layout';
