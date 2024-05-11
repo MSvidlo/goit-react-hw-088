@@ -9,7 +9,7 @@ export const fetchContacts = createAsyncThunk('contacts/fatchAll',
         try {
             const response = await axios.get('/contacts');
             return response.data;
-        } catch (error) {
+        } catch (error) { 
             return thunkAPI.rejectWithValue(error.message);
         }
     });

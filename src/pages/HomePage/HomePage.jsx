@@ -20,8 +20,7 @@ export default function HomePage() {
 
       <div style={styles.container}>
         <h1 style={styles.title}>
-        Home Page placeholder
-        </h1>
+        Home Page </h1>
       </div>
     </>
   );

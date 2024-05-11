@@ -83,7 +83,7 @@ function RegistrationForm() {
             size="small"
             type="submit"
           >
-            Register
+            Registration
           </Button>
         </div>
       </Form>

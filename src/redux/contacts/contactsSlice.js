@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { CONSTANTS } from './constants.js';
-import { fetchContacts,addContact,deleteContact } from "./contactsOps.js";
+import { fetchContacts,addContact,deleteContact,patchContact } from "./contactsOps";
 import { createSelector } from "@reduxjs/toolkit";
 import { filter } from "../filters/filtersSlice.js";
+import { logOut } from "../auth/operations.js";
 
 
 const handlePending = (state) => {
@@ -45,6 +46,14 @@ const ontactsSlice = createSlice({
         );
              })
       .addCase(deleteContact.rejected, handleRejected)
+      .addCase(patchContact.fulfilled, (state, action) => {
+        state.items = state.items.map(item =>
+          item.id === action.payload.id ? action.payload : item
+        );
+      })
+      .addCase(logOut.fulfilled, state => {
+        state.items = [];
+      });
       
   },
 });

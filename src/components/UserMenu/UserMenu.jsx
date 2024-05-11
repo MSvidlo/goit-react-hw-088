@@ -1,4 +1,4 @@
-import { Logout } from '../Logout/Logout';
+import  Logout  from '../Logout/Logout';
 import { useSelector } from 'react-redux';
 import css from './UserMenu.module.css';
 import { selectUser } from '../../redux/auth/selectors.js';

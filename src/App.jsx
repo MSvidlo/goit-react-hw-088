@@ -38,7 +38,7 @@ const App = () => {
   return     isRefreshing ? (
     <b>Refreshing user...</b>) : (
     <Layout>
-      <Routes>
+      <Routes forceRefresh={true}>
         <Route path="/" element={<HomePage />} />
         <Route
           path="/register"
